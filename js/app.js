@@ -105,7 +105,7 @@ function cerrarModal() {
 }
 
 // ===== RESERVAS POR WHATSAPP =====
-const BARBER_PHONE_INTL = '573135777951';
+const BARBER_PHONE_INTL = '573122785946';
 const BOOKED_APPOINTMENTS_KEY = 'bookedAppointments';
 const LOCAL_APPOINTMENTS_KEY = 'makeands_citas';
 
