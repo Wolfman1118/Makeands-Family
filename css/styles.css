@@ -701,7 +701,11 @@ body {
   background-size: cover;
   background-position: center;
 }
-.gomina-1 { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #222 100%); }
+.gomina-1 {
+    background-image: url("../img/gominas/n17.webp");
+    background-size: cover;
+    background-position: center;
+ }
 .gomina-2 { background: linear-gradient(135deg, #0a1628 0%, #152a4a 50%, #1d3a5c 100%); }
 .gomina-3 { background: linear-gradient(135deg, #0f0500 0%, #2a1200 50%, #3d1c00 100%); }
 .cap-1 { background: linear-gradient(135deg, #100a00 0%, #251500 50%, #3d2400 100%); }
