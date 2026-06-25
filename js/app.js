@@ -29,7 +29,7 @@ function showPage(pageId) {
   // Cargar citas guardadas si estamos en la página de cita
   if (pageId === 'cita') {
     cargarCitasGuardadas();
-    initFecha();
+    initReservationForm();
   }
 }
 
@@ -104,128 +104,262 @@ function cerrarModal() {
   document.getElementById('modal-backdrop').classList.remove('open');
 }
 
-// ===== CITAS - INICIALIZAR FECHA =====
-function initFecha() {
-  const fechaInput = document.getElementById('cita-fecha');
-  if (!fechaInput) return;
+// ===== RESERVAS POR WHATSAPP =====
+const BARBER_PHONE_INTL = '573135777951';
+const BOOKED_APPOINTMENTS_KEY = 'bookedAppointments';
+const LOCAL_APPOINTMENTS_KEY = 'makeands_citas';
 
-  // Bloquear fechas pasadas y domingos
+function getTodayISO() {
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
-  const yyyy = hoy.getFullYear();
-  const mm = String(hoy.getMonth() + 1).padStart(2, '0');
-  const dd = String(hoy.getDate()).padStart(2, '0');
-  fechaInput.min = `${yyyy}-${mm}-${dd}`;
-
-  fechaInput.addEventListener('change', () => {
-    const selectedDate = new Date(fechaInput.value + 'T00:00:00');
-    const day = selectedDate.getDay(); // 0 = domingo
-
-    if (day === 0) {
-      alert('Lo sentimos, no trabajamos los domingos. Por favor elige otro día.');
-      fechaInput.value = '';
-      return;
-    }
-    generarHorarios();
-  });
-
-  generarHorarios();
+  return hoy.toISOString().split('T')[0];
 }
 
-// ===== GENERAR HORARIOS =====
-function generarHorarios() {
-  const select = document.getElementById('cita-hora');
-  select.innerHTML = '<option value="">Selecciona hora</option>';
-
-  const now = new Date();
-  const fechaInput = document.getElementById('cita-fecha');
-  const selectedDate = fechaInput.value ? new Date(fechaInput.value + 'T00:00:00') : null;
-  const isToday = selectedDate && selectedDate.toDateString() === now.toDateString();
-
+function getAllTimeSlots() {
+  const slots = [];
   for (let h = 9; h < 18; h++) {
     for (let m = 0; m < 60; m += 30) {
-      // Si es hoy, bloquear horas pasadas (con 30 min de margen)
-      if (isToday) {
-        const slotTime = new Date();
-        slotTime.setHours(h, m, 0, 0);
-        const margin = new Date(now.getTime() + 30 * 60000);
-        if (slotTime <= margin) continue;
-      }
-
-      const hStr = String(h).padStart(2, '0');
-      const mStr = String(m).padStart(2, '0');
-      const period = h < 12 ? 'AM' : 'PM';
-      const h12 = h > 12 ? h - 12 : h === 0 ? 12 : h;
-      const label = `${h12}:${mStr} ${period}`;
-      const value = `${hStr}:${mStr}`;
-
-      const option = document.createElement('option');
-      option.value = value;
-      option.textContent = label;
-      select.appendChild(option);
+      const hh = String(h).padStart(2, '0');
+      const mm = String(m).padStart(2, '0');
+      slots.push(`${hh}:${mm}`);
     }
+  }
+  return slots;
+}
+
+function formatTimeLabel(value) {
+  const [hh, mm] = value.split(':');
+  const h = parseInt(hh, 10);
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${h12}:${mm} ${h < 12 ? 'AM' : 'PM'}`;
+}
+
+function getBookedAppointments() {
+  try {
+    const raw = localStorage.getItem(BOOKED_APPOINTMENTS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
   }
 }
 
-// ===== RESERVAR CITA =====
-function reservarCita() {
-  const nombre = document.getElementById('cita-nombre').value.trim();
-  const cel = document.getElementById('cita-cel').value.trim();
-  const email = document.getElementById('cita-email').value.trim();
-  const servicio = document.getElementById('cita-servicio').value;
-  const fecha = document.getElementById('cita-fecha').value;
-  const hora = document.getElementById('cita-hora').value;
-  const comentarios = document.getElementById('cita-comentarios').value.trim();
+function getBookedForDate(date) {
+  if (!date) return [];
+  const booked = getBookedAppointments();
+  return Array.isArray(booked[date]) ? booked[date] : [];
+}
 
-  // Validación
-  if (!nombre) { alert('Por favor ingresa tu nombre completo.'); return; }
-  if (!cel) { alert('Por favor ingresa tu número de celular.'); return; }
-  if (!servicio) { alert('Por favor selecciona un servicio.'); return; }
-  if (!fecha) { alert('Por favor selecciona una fecha.'); return; }
-  if (!hora) { alert('Por favor selecciona una hora.'); return; }
+function saveBookedAppointments(booked) {
+  localStorage.setItem(BOOKED_APPOINTMENTS_KEY, JSON.stringify(booked));
+}
 
-  // Formatear fecha
+function renderAvailableTimes(date) {
+  const select = document.getElementById('timeSelect');
+  if (!select) return;
+  select.innerHTML = '<option value="">Selecciona hora</option>';
+
+  if (!date) {
+    select.disabled = true;
+    return;
+  }
+
+  const bookedForDate = getBookedForDate(date);
+  const today = getTodayISO();
+  const isToday = date === today;
+  const now = new Date();
+  const availableSlots = getAllTimeSlots().filter(slot => {
+    if (bookedForDate.includes(slot)) return false;
+    if (isToday) {
+      const [hh, mm] = slot.split(':').map(Number);
+      const slotDate = new Date();
+      slotDate.setHours(hh, mm, 0, 0);
+      const margin = new Date(now.getTime() + 30 * 60000);
+      return slotDate > margin;
+    }
+    return true;
+  });
+
+  if (availableSlots.length === 0) {
+    const option = document.createElement('option');
+    option.value = '';
+    option.disabled = true;
+    option.textContent = 'No hay horarios disponibles';
+    select.appendChild(option);
+    select.disabled = true;
+    return;
+  }
+
+  availableSlots.forEach(slot => {
+    const option = document.createElement('option');
+    option.value = slot;
+    option.textContent = formatTimeLabel(slot);
+    select.appendChild(option);
+  });
+  select.disabled = false;
+}
+
+function showToast(message, type = 'success') {
+  const toast = document.getElementById('toast');
+  if (!toast) {
+    alert(message);
+    return;
+  }
+
+  toast.textContent = message;
+  toast.className = `toast ${type}`;
+  toast.style.display = 'block';
+
+  clearTimeout(window.toastTimeout);
+  window.toastTimeout = setTimeout(() => {
+    toast.style.display = 'none';
+  }, 3500);
+}
+
+function isValidPhone(value) {
+  const digits = value.replace(/\D/g, '');
+  return digits.length >= 7;
+}
+
+function isDateValid(date) {
+  if (!date) return false;
+  const selected = new Date(date + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return selected >= today && selected.getDay() !== 0;
+}
+
+function reserveSlot(date, time) {
+  const booked = getBookedAppointments();
+  if (!booked[date]) booked[date] = [];
+  if (booked[date].includes(time)) {
+    return false;
+  }
+  booked[date].push(time);
+  saveBookedAppointments(booked);
+  return true;
+}
+
+function saveLocalAppointment(appointment) {
+  try {
+    const lista = JSON.parse(localStorage.getItem(LOCAL_APPOINTMENTS_KEY) || '[]');
+    lista.push({ ...appointment, created: new Date().toLocaleDateString('es-CO') });
+    localStorage.setItem(LOCAL_APPOINTMENTS_KEY, JSON.stringify(lista));
+  } catch (e) {
+    // Ignorar si localStorage no está disponible
+  }
+}
+
+function openWhatsApp(appointment) {
+  const text = `¡Hola MAKEANDS FAMILY! Quiero agendar una cita. Cliente: ${appointment.clientName}. Celular: ${appointment.clientPhone}. Servicio: ${appointment.serviceName} (${appointment.servicePrice}). Fecha: ${appointment.date}. Hora: ${appointment.time}.`;
+  const url = `https://wa.me/${BARBER_PHONE_INTL}?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+}
+
+function setServicePrice() {
+  const serviceSelect = document.getElementById('serviceName');
+  const priceInput = document.getElementById('servicePrice');
+  if (!serviceSelect || !priceInput) return;
+  const selected = serviceSelect.selectedOptions[0];
+  const price = selected?.dataset?.price || '';
+  priceInput.value = price ? `$${Number(price).toLocaleString('es-CO')} COP` : '';
+}
+
+function initReservationForm() {
+  const dateInput = document.getElementById('date');
+  const serviceSelect = document.getElementById('serviceName');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+
+  if (dateInput) {
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+    dateInput.onchange = () => {
+      if (!dateInput.value) {
+        renderAvailableTimes('');
+        return;
+      }
+
+      const selected = new Date(dateInput.value + 'T00:00:00');
+      if (selected.getDay() === 0) {
+        showToast('No trabajamos los domingos. Elige otra fecha.', 'error');
+        dateInput.value = '';
+        renderAvailableTimes('');
+        return;
+      }
+
+      renderAvailableTimes(dateInput.value);
+    };
+  }
+
+  if (serviceSelect) {
+    serviceSelect.onchange = setServicePrice;
+  }
+
+  setServicePrice();
+  renderAvailableTimes(dateInput ? dateInput.value : '');
+}
+
+function getReadableDate(fecha) {
   const dateObj = new Date(fecha + 'T00:00:00');
   const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  const fechaLegible = `${diasSemana[dateObj.getDay()]} ${dateObj.getDate()} de ${meses[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+  return `${diasSemana[dateObj.getDay()]} ${dateObj.getDate()} de ${meses[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+}
 
+function getReadableTime(hora) {
   const [hh, mm] = hora.split(':');
-  const h = parseInt(hh);
-  const period = h < 12 ? 'AM' : 'PM';
-  const h12 = h > 12 ? h - 12 : h === 0 ? 12 : h;
-  const horaLegible = `${h12}:${mm} ${period}`;
+  const h = parseInt(hh, 10);
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${h12}:${mm} ${h < 12 ? 'AM' : 'PM'}`;
+}
 
-  // Guardar en localStorage (nota: en Claude.ai los localStorage se manejan de forma limitada)
-  try {
-    const citas = JSON.parse(localStorage.getItem('makeands_citas') || '[]');
-    const nuevaCita = {
-      id: Date.now(),
-      nombre, cel, email, servicio, fecha, hora,
-      fechaLegible, horaLegible, comentarios,
-      creada: new Date().toLocaleDateString('es-CO')
-    };
-    citas.push(nuevaCita);
-    localStorage.setItem('makeands_citas', JSON.stringify(citas));
-  } catch(e) {
-    // localStorage no disponible — continuamos igual
-  }
-
-  // Mostrar confirmación
+function showConfirmation(appointment) {
   const summary = document.getElementById('confirm-summary');
   summary.innerHTML = `
-    <div class="confirm-row"><span>Nombre</span><span>${nombre}</span></div>
-    <div class="confirm-row"><span>Celular</span><span>${cel}</span></div>
-    <div class="confirm-row"><span>Servicio</span><span>${servicio}</span></div>
-    <div class="confirm-row"><span>Fecha</span><span>${fechaLegible}</span></div>
-    <div class="confirm-row"><span>Hora</span><span>${horaLegible}</span></div>
-    ${comentarios ? `<div class="confirm-row"><span>Comentarios</span><span>${comentarios}</span></div>` : ''}
+    <div class="confirm-row"><span>Nombre</span><span>${appointment.clientName}</span></div>
+    <div class="confirm-row"><span>Celular</span><span>${appointment.clientPhone}</span></div>
+    <div class="confirm-row"><span>Servicio</span><span>${appointment.serviceName}</span></div>
+    <div class="confirm-row"><span>Precio</span><span>${appointment.servicePrice}</span></div>
+    <div class="confirm-row"><span>Fecha</span><span>${getReadableDate(appointment.date)}</span></div>
+    <div class="confirm-row"><span>Hora</span><span>${getReadableTime(appointment.time)}</span></div>
+    ${appointment.comments ? `<div class="confirm-row"><span>Comentarios</span><span>${appointment.comments}</span></div>` : ''}
   `;
 
   document.getElementById('cita-form-wrap').style.display = 'none';
   document.getElementById('cita-confirm').style.display = 'block';
+}
 
-  // Actualizar lista de citas
+function reservarCita() {
+  const clientName = document.getElementById('clientName').value.trim();
+  const clientPhone = document.getElementById('clientPhone').value.trim();
+  const email = document.getElementById('cita-email').value.trim();
+  const serviceName = document.getElementById('serviceName').value;
+  const servicePrice = document.getElementById('servicePrice').value.trim();
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('timeSelect').value;
+  const comments = document.getElementById('cita-comentarios').value.trim();
+
+  if (!clientName) { showToast('Por favor ingresa tu nombre completo.', 'error'); return; }
+  if (!clientPhone) { showToast('Por favor ingresa tu número de celular.', 'error'); return; }
+  if (!isValidPhone(clientPhone)) { showToast('El teléfono debe tener al menos 7 dígitos.', 'error'); return; }
+  if (!serviceName) { showToast('Por favor selecciona un servicio.', 'error'); return; }
+  if (!date) { showToast('Por favor selecciona una fecha.', 'error'); return; }
+  if (!isDateValid(date)) { showToast('Selecciona una fecha válida igual o mayor a hoy.', 'error'); return; }
+  if (!time) { showToast('Por favor selecciona una hora.', 'error'); renderAvailableTimes(date); return; }
+
+  const appointment = { clientName, clientPhone, email, serviceName, servicePrice: servicePrice || '$0 COP', date, time, comments };
+
+  if (!reserveSlot(date, time)) {
+    showToast('La hora ya fue reservada. Elige otra hora.', 'error');
+    renderAvailableTimes(date);
+    return;
+  }
+
+  saveLocalAppointment(appointment);
+  showToast('Reserva guardada localmente. Abriendo WhatsApp...', 'success');
+  showConfirmation(appointment);
+  openWhatsApp(appointment);
   cargarCitasGuardadas();
 }
 
@@ -234,16 +368,16 @@ function nuevaCita() {
   document.getElementById('cita-form-wrap').style.display = 'block';
   document.getElementById('cita-confirm').style.display = 'none';
 
-  // Reset formulario
-  ['cita-nombre','cita-cel','cita-email','cita-comentarios'].forEach(id => {
+  ['clientName','clientPhone','cita-email','cita-comentarios'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
-  ['cita-servicio','cita-fecha','cita-hora'].forEach(id => {
+  ['serviceName','date','timeSelect'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
-  initFecha();
+  setServicePrice();
+  initReservationForm();
 }
 
 // ===== CARGAR CITAS GUARDADAS =====
@@ -257,14 +391,16 @@ function cargarCitasGuardadas() {
       card.style.display = 'block';
       list.innerHTML = '';
 
-      // Mostrar las últimas 3 citas
       const recientes = citas.slice(-3).reverse();
       recientes.forEach(c => {
+        const serviceLabel = c.servicio || c.serviceName || 'Servicio';
+        const fechaLabel = c.fechaLegible || getReadableDate(c.fecha || c.date || '');
+        const horaLabel = c.horaLegible || getReadableTime(c.hora || c.time || '');
         const item = document.createElement('div');
         item.className = 'cita-saved-item';
         item.innerHTML = `
-          <strong>${c.servicio}</strong>
-          <span>${c.fechaLegible} – ${c.horaLegible}</span>
+          <strong>${serviceLabel}</strong>
+          <span>${fechaLabel} – ${horaLabel}</span>
         `;
         list.appendChild(item);
       });
@@ -338,16 +474,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Asegurarse de que la página de inicio esté activa
   showPage('inicio');
-
-  // Aplicar fecha mínima al input de fecha
-  const fechaInput = document.getElementById('cita-fecha');
-  if (fechaInput) {
-    const hoy = new Date();
-    const yyyy = hoy.getFullYear();
-    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
-    const dd = String(hoy.getDate()).padStart(2, '0');
-    fechaInput.min = `${yyyy}-${mm}-${dd}`;
-  }
+  initReservationForm();
 
   // Animar hero al cargar
   const heroTitle = document.querySelector('.hero-title');

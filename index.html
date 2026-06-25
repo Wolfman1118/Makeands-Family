@@ -469,38 +469,42 @@
           <div class="cita-form-wrap" id="cita-form-wrap">
             <h2>Tu información</h2>
             <div class="form-group">
-              <label for="cita-nombre">Nombre completo *</label>
-              <input type="text" id="cita-nombre" placeholder="Ej: Juan Pérez" />
+              <label for="clientName">Nombre completo *</label>
+              <input type="text" id="clientName" placeholder="Ej: Juan Pérez" />
             </div>
             <div class="form-group">
-              <label for="cita-cel">Número de celular *</label>
-              <input type="tel" id="cita-cel" placeholder="+57 300 000 0000" />
+              <label for="clientPhone">Número de celular *</label>
+              <input type="tel" id="clientPhone" placeholder="+57 300 000 0000" />
             </div>
             <div class="form-group">
               <label for="cita-email">Correo electrónico</label>
               <input type="email" id="cita-email" placeholder="correo@ejemplo.com" />
             </div>
             <div class="form-group">
-              <label for="cita-servicio">Servicio *</label>
-              <select id="cita-servicio">
+              <label for="serviceName">Servicio *</label>
+              <select id="serviceName">
                 <option value="">Selecciona un servicio</option>
-                <option>Corte Clásico</option>
-                <option>Corte Fade</option>
-                <option>Corte Taper Fade</option>
-                <option>Corte Buzz Cut</option>
-                <option>Corte Low Fade</option>
-                <option>Corte High Fade</option>
-                <option>Corte con Diseño</option>
+                <option value="Corte Clásico" data-price="20000">Corte Clásico</option>
+                <option value="Corte Fade" data-price="25000">Corte Fade</option>
+                <option value="Corte Taper Fade" data-price="28000">Corte Taper Fade</option>
+                <option value="Corte Buzz Cut" data-price="18000">Corte Buzz Cut</option>
+                <option value="Corte Low Fade" data-price="22000">Corte Low Fade</option>
+                <option value="Corte High Fade" data-price="24000">Corte High Fade</option>
+                <option value="Corte con Diseño" data-price="32000">Corte con Diseño</option>
               </select>
+            </div>
+            <div class="form-group">
+              <label for="servicePrice">Precio *</label>
+              <input type="text" id="servicePrice" placeholder="$0 COP" readonly />
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="cita-fecha">Fecha *</label>
-                <input type="date" id="cita-fecha" />
+                <label for="date">Fecha *</label>
+                <input type="date" id="date" />
               </div>
               <div class="form-group">
-                <label for="cita-hora">Hora *</label>
-                <select id="cita-hora">
+                <label for="timeSelect">Hora *</label>
+                <select id="timeSelect">
                   <option value="">Selecciona hora</option>
                 </select>
               </div>
@@ -562,6 +566,22 @@
 
         </div>
       </div>
+      <!--
+        PRUEBAS MANUALES DE RESERVA:
+        1. Abrir dos ventanas del mismo navegador.
+        2. En ventana A: seleccionar fecha 2026-06-26 y hora 10:00.
+        3. Confirmar reserva; se abrirá WhatsApp y localStorage guardará la hora.
+        4. En ventana B: seleccionar 2026-06-26. La hora 10:00 no debe aparecer.
+        5. Si la hora se reserva primero en la ventana A, B mostrará mensaje de hora no disponible.
+
+        Ejemplo localStorage para pruebas:
+        {
+          "2026-06-26": ["10:00","11:30"],
+          "2026-06-27": ["09:00"]
+        }
+
+        Nota: esta solución funciona solo a nivel cliente. Para concurrencia real entre dispositivos se requiere backend.
+      -->
     </section><!-- /page-cita -->
 
 
@@ -675,6 +695,7 @@
     </div>
   </footer>
 
+  <div id="toast" style="display:none; position:fixed; left:50%; bottom:24px; transform:translateX(-50%); z-index:9999; padding:12px 18px; border-radius:12px; color:#fff; font-weight:600; box-shadow:0 8px 24px rgba(0,0,0,0.18); max-width:90%; text-align:center; word-break:break-word;"></div>
   <script src="js/app.js"></script>
 </body>
 </html>
