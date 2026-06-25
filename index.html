@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAKEANDS FAMILY – Más de 10 años cuidando tu estilo</title>
+  <meta name="description" content="Barbería MAKEANDS FAMILY – Cortes modernos y atención personalizada en Colombia. Más de 10 años de experiencia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== WHATSAPP FLOTANTE ===== -->
+  <a href="https://wa.me/573122785946" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="showPage('inicio')">
+        <div class="logo-mini">
+          <svg viewBox="0 0 60 40" class="logo-svg-mini">
+            <ellipse cx="30" cy="25" rx="12" ry="11" fill="#555"/>
+            <ellipse cx="30" cy="22" rx="10" ry="9" fill="#666"/>
+            <circle cx="26" cy="20" r="2" fill="#222"/>
+            <circle cx="34" cy="20" r="2" fill="#222"/>
+            <ellipse cx="30" cy="26" rx="5" ry="3" fill="#444"/>
+            <path d="M22 30 Q30 35 38 30" stroke="#777" stroke-width="1.5" fill="none"/>
+            <polygon points="30,10 33,17 27,17" fill="#D4AF37"/>
+            <rect x="23" y="15" width="2" height="3" fill="#D4AF37"/>
+            <rect x="35" y="15" width="2" height="3" fill="#D4AF37"/>
+            <rect x="8" y="12" width="4" height="22" rx="2" fill="white"/>
+            <rect x="8" y="14" width="4" height="4" fill="#D62828"/>
+            <rect x="8" y="18" width="4" height="2" fill="white"/>
+            <rect x="8" y="20" width="4" height="4" fill="#1D4ED8"/>
+            <rect x="8" y="24" width="4" height="4" fill="#D62828"/>
+            <rect x="48" y="12" width="4" height="22" rx="2" fill="white"/>
+            <rect x="48" y="14" width="4" height="4" fill="#D62828"/>
+            <rect x="48" y="18" width="4" height="2" fill="white"/>
+            <rect x="48" y="20" width="4" height="4" fill="#1D4ED8"/>
+            <rect x="48" y="24" width="4" height="4" fill="#D62828"/>
+          </svg>
+        </div>
+        <span class="logo-text-mini">MAKEANDS <span class="gold">FAMILY</span></span>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" class="nav-link active" data-page="inicio">Inicio</a></li>
+        <li><a href="#" class="nav-link" data-page="productos">Productos</a></li>
+        <li><a href="#" class="nav-link" data-page="nosotros">Sobre Nosotros</a></li>
+        <li><a href="#" class="nav-link nav-cta" data-page="cita">Pedir Cita</a></li>
+        <li><a href="#" class="nav-link" data-page="contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== PÁGINAS ===== -->
+  <main id="main-content">
+
+    <!-- =============================== -->
+    <!-- PAGE: INICIO                    -->
+    <!-- =============================== -->
+    <section class="page active" id="page-inicio">
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+          <div class="hero-logo-wrap">
+            <!-- BULLDOG SVG LOGO PRINCIPAL -->
+            <svg viewBox="0 0 220 200" class="hero-logo-svg" xmlns="http://www.w3.org/2000/svg">
+              <!-- Barber Pole Izquierdo -->
+              <g class="pole-left">
+                <rect x="18" y="30" width="18" height="140" rx="9" fill="#F0F0F0" stroke="#ccc" stroke-width="1"/>
+                <clipPath id="clip-left">
+                  <rect x="18" y="30" width="18" height="140" rx="9"/>
+                </clipPath>
+                <g clip-path="url(#clip-left)">
+                  <rect x="18" y="30" width="18" height="18" fill="#D62828"/>
+                  <rect x="18" y="48" width="18" height="9" fill="#FFFFFF"/>
+                  <rect x="18" y="57" width="18" height="18" fill="#1D4ED8"/>
+                  <rect x="18" y="75" width="18" height="18" fill="#D62828"/>
+                  <rect x="18" y="93" width="18" height="9" fill="#FFFFFF"/>
+                  <rect x="18" y="102" width="18" height="18" fill="#1D4ED8"/>
+                  <rect x="18" y="120" width="18" height="18" fill="#D62828"/>
+                  <rect x="18" y="138" width="18" height="9" fill="#FFFFFF"/>
+                  <rect x="18" y="147" width="18" height="18" fill="#1D4ED8"/>
+                </g>
+                <ellipse cx="27" cy="30" rx="9" ry="5" fill="#D4AF37"/>
+                <ellipse cx="27" cy="170" rx="9" ry="5" fill="#D4AF37"/>
+              </g>
+
+              <!-- Barber Pole Derecho -->
+              <g class="pole-right">
+                <rect x="184" y="30" width="18" height="140" rx="9" fill="#F0F0F0" stroke="#ccc" stroke-width="1"/>
+                <clipPath id="clip-right">
+                  <rect x="184" y="30" width="18" height="140" rx="9"/>
+                </clipPath>
+                <g clip-path="url(#clip-right)">
+                  <rect x="184" y="30" width="18" height="18" fill="#D62828"/>
+                  <rect x="184" y="48" width="18" height="9" fill="#FFFFFF"/>
+                  <rect x="184" y="57" width="18" height="18" fill="#1D4ED8"/>
+                  <rect x="184" y="75" width="18" height="18" fill="#D62828"/>
+                  <rect x="184" y="93" width="18" height="9" fill="#FFFFFF"/>
+                  <rect x="184" y="102" width="18" height="18" fill="#1D4ED8"/>
+                  <rect x="184" y="120" width="18" height="18" fill="#D62828"/>
+                  <rect x="184" y="138" width="18" height="9" fill="#FFFFFF"/>
+                  <rect x="184" y="147" width="18" height="18" fill="#1D4ED8"/>
+                </g>
+                <ellipse cx="193" cy="30" rx="9" ry="5" fill="#D4AF37"/>
+                <ellipse cx="193" cy="170" rx="9" ry="5" fill="#D4AF37"/>
+              </g>
+
+              <!-- BULLDOG BODY -->
+              <g class="bulldog">
+                <!-- Cuerpo -->
+                <ellipse cx="110" cy="155" rx="45" ry="35" fill="#5A5A5A"/>
+                <!-- Cabeza -->
+                <ellipse cx="110" cy="105" rx="48" ry="44" fill="#6B6B6B"/>
+                <!-- Mejillas anchas bulldog -->
+                <ellipse cx="87" cy="118" rx="20" ry="16" fill="#5E5E5E"/>
+                <ellipse cx="133" cy="118" rx="20" ry="16" fill="#5E5E5E"/>
+                <!-- Frente arrugada -->
+                <ellipse cx="110" cy="90" rx="35" ry="28" fill="#717171"/>
+                <!-- Arrugas frente -->
+                <path d="M97 82 Q110 78 123 82" stroke="#555" stroke-width="2" fill="none"/>
+                <path d="M101 87 Q110 84 119 87" stroke="#555" stroke-width="1.5" fill="none"/>
+                <!-- Ojos -->
+                <circle cx="96" cy="98" r="9" fill="#2A2A2A"/>
+                <circle cx="124" cy="98" r="9" fill="#2A2A2A"/>
+                <circle cx="96" cy="98" r="6" fill="#1A1A1A"/>
+                <circle cx="124" cy="98" r="6" fill="#1A1A1A"/>
+                <circle cx="98" cy="96" r="2" fill="white"/>
+                <circle cx="126" cy="96" r="2" fill="white"/>
+                <!-- Nariz -->
+                <ellipse cx="110" cy="113" rx="12" ry="8" fill="#3A3A3A"/>
+                <ellipse cx="105" cy="111" rx="4" ry="3" fill="#2A2A2A"/>
+                <ellipse cx="115" cy="111" rx="4" ry="3" fill="#2A2A2A"/>
+                <path d="M104 116 Q110 119 116 116" stroke="#888" stroke-width="1" fill="none"/>
+                <!-- Boca / Papada -->
+                <ellipse cx="110" cy="128" rx="28" ry="16" fill="#5A5A5A"/>
+                <path d="M90 124 Q110 135 130 124" stroke="#444" stroke-width="2" fill="#4A4A4A"/>
+                <!-- Colmillos -->
+                <rect x="100" y="126" width="5" height="8" rx="2" fill="#E8E8E8"/>
+                <rect x="115" y="126" width="5" height="8" rx="2" fill="#E8E8E8"/>
+                <!-- Orejas -->
+                <ellipse cx="73" cy="92" rx="14" ry="12" fill="#5A5A5A"/>
+                <ellipse cx="147" cy="92" rx="14" ry="12" fill="#5A5A5A"/>
+                <!-- Corbatín de moño (toque elegante) -->
+                <path d="M102 148 L108 143 L114 148 L108 153 Z" fill="#D4AF37"/>
+                <circle cx="110" cy="148" r="3" fill="#B8960C"/>
+              </g>
+
+              <!-- CORONA DORADA -->
+              <g class="crown">
+                <!-- Base corona -->
+                <rect x="82" y="60" width="56" height="20" rx="3" fill="#D4AF37"/>
+                <!-- Puntas corona -->
+                <polygon points="82,60 89,42 96,60" fill="#D4AF37"/>
+                <polygon points="97,60 110,36 123,60" fill="#D4AF37"/>
+                <polygon points="124,60 131,42 138,60" fill="#D4AF37"/>
+                <!-- Joyas en corona -->
+                <circle cx="110" cy="44" r="5" fill="#D62828"/>
+                <circle cx="89" cy="48" r="3.5" fill="#1D4ED8"/>
+                <circle cx="131" cy="48" r="3.5" fill="#1D4ED8"/>
+                <!-- Detalles línea corona -->
+                <rect x="82" y="68" width="56" height="4" rx="2" fill="#B8960C"/>
+                <circle cx="95" cy="67" r="3" fill="#B8960C"/>
+                <circle cx="110" cy="67" r="3" fill="#B8960C"/>
+                <circle cx="125" cy="67" r="3" fill="#B8960C"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="hero-text">
+            <p class="hero-eyebrow">Barbería Profesional</p>
+            <h1 class="hero-title">MAKEANDS<br/><span class="gold-text">FAMILY</span></h1>
+            <p class="hero-slogan">Más de 10 años cuidando tu estilo</p>
+            <div class="hero-meta">
+              <span>🕐 Lun–Sáb: 9:00 AM – 6:00 PM</span>
+              <span>📞 +57 312 278 5946</span>
+            </div>
+            <div class="hero-cta">
+              <button class="btn-primary" onclick="showPage('cita')">Reservar Cita</button>
+              <button class="btn-secondary" onclick="showPage('productos')">Ver Productos</button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-scroll-hint">↓</div>
+      </div>
+
+      <!-- PRECIO DESTACADO -->
+      <section class="price-highlight">
+        <div class="price-inner">
+          <div class="price-badge">✂</div>
+          <p class="price-label">CORTE MASCULINO</p>
+          <p class="price-amount">$20.000 <span>COP</span></p>
+          <p class="price-sub">Precio especial · Servicio completo</p>
+          <button class="btn-primary" onclick="showPage('cita')">Agendar ahora</button>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section class="section" id="servicios">
+        <div class="section-header">
+          <span class="section-eyebrow">Nuestros Servicios</span>
+          <h2 class="section-title">Cortes que <span class="gold-text">Definen</span> tu Estilo</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">✂</div>
+            <div class="service-img classic"></div>
+            <h3>Corte Clásico</h3>
+            <p>El corte atemporal que nunca pasa de moda. Elegancia y tradición en cada tijera.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <div class="service-img fade"></div>
+            <h3>Corte Fade</h3>
+            <p>Degradado perfecto que transita suavemente del largo al corto. Estilo moderno garantizado.</p>
+          </div>
+          <div class="service-card featured">
+            <div class="service-badge">Popular</div>
+            <div class="service-icon">⭐</div>
+            <div class="service-img taper"></div>
+            <h3>Taper Fade</h3>
+            <p>La combinación perfecta de degradado y longitud. El favorito de nuestros clientes.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💈</div>
+            <div class="service-img buzz"></div>
+            <h3>Buzz Cut</h3>
+            <p>Corte uniforme y limpio. Minimalismo masculino con máxima presencia.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🔥</div>
+            <div class="service-img lowfade"></div>
+            <h3>Low Fade</h3>
+            <p>Degradado bajo que da un toque sofisticado sin ser demasiado atrevido.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💥</div>
+            <div class="service-img highfade"></div>
+            <h3>High Fade</h3>
+            <p>El degradado que empieza alto y genera contraste visual impactante.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🎭</div>
+            <div class="service-img design"></div>
+            <h3>Corte con Diseño</h3>
+            <p>Arte en tu cabello. Líneas, figuras y diseños personalizados a tu gusto.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERÍA -->
+      <section class="section gallery-section">
+        <div class="section-header">
+          <span class="section-eyebrow">Galería</span>
+          <h2 class="section-title">Nuestro <span class="gold-text">Trabajo</span></h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item gi-1"><div class="gallery-overlay"><span>Taper Fade</span></div></div>
+          <div class="gallery-item gi-2"><div class="gallery-overlay"><span>Corte Clásico</span></div></div>
+          <div class="gallery-item gi-3"><div class="gallery-overlay"><span>High Fade</span></div></div>
+          <div class="gallery-item gi-4"><div class="gallery-overlay"><span>Buzz Cut</span></div></div>
+          <div class="gallery-item gi-5"><div class="gallery-overlay"><span>Diseño</span></div></div>
+          <div class="gallery-item gi-6"><div class="gallery-overlay"><span>Low Fade</span></div></div>
+        </div>
+      </section>
+
+      <!-- BENEFICIOS -->
+      <section class="section benefits-section">
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-icon">🏆</div>
+            <h4>+10 Años de Experiencia</h4>
+            <p>Una década perfeccionando el arte del corte masculino.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">👑</div>
+            <h4>Atención Personalizada</h4>
+            <p>Cada cliente recibe el trato que merece: único y especial.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">💈</div>
+            <h4>Productos Profesionales</h4>
+            <p>Solo usamos las mejores marcas del mercado barber.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">❤️</div>
+            <h4>Ambiente Familiar</h4>
+            <p>Un espacio donde todos son bienvenidos y tratados como familia.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">⭐</div>
+            <h4>Excelente Servicio</h4>
+            <p>Tu satisfacción es nuestra mayor recompensa.</p>
+          </div>
+        </div>
+      </section>
+
+    </section><!-- /page-inicio -->
+
+
+    <!-- =============================== -->
+    <!-- PAGE: PRODUCTOS                 -->
+    <!-- =============================== -->
+    <section class="page" id="page-productos">
+      <div class="page-hero">
+        <h1>Nuestros <span class="gold-text">Productos</span></h1>
+        <p>Línea profesional para el cuidado masculino</p>
+      </div>
+
+      <div class="section">
+        <!-- Filtros -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="lociones">Lociones</button>
+          <button class="filter-btn" data-filter="gominas">Gominas</button>
+          <button class="filter-btn" data-filter="capilares">Capilares</button>
+        </div>
+
+        <!-- Lociones -->
+        <div class="products-category" id="cat-lociones">
+          <h3 class="category-title"><span class="gold-text">💧</span> Lociones</h3>
+          <div class="products-grid">
+            <div class="product-card" data-cat="lociones">
+              <div class="product-img locion-1"></div>
+              <div class="product-info">
+                <span class="product-tag">Loción</span>
+                <h4>Fresh Barber</h4>
+                <p>Fragancia fresca y duradera. Ideal para el uso diario, nutre e hidrata tu piel.</p>
+                <div class="product-footer">
+                  <span class="product-price">$35.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Loción Fresh Barber')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="lociones">
+              <div class="product-img locion-2"></div>
+              <div class="product-info">
+                <span class="product-tag premium">Premium</span>
+                <h4>Gold Edition</h4>
+                <p>Nuestra línea premium. Aroma exclusivo, fórmula avanzada para piel exigente.</p>
+                <div class="product-footer">
+                  <span class="product-price">$55.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Loción Gold Edition')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="lociones">
+              <div class="product-img locion-3"></div>
+              <div class="product-info">
+                <span class="product-tag">Loción</span>
+                <h4>Urban Style</h4>
+                <p>Para el hombre contemporáneo. Aroma urbano, sofisticado y duradero.</p>
+                <div class="product-footer">
+                  <span class="product-price">$42.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Loción Urban Style')">Consultar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gominas -->
+        <div class="products-category" id="cat-gominas">
+          <h3 class="category-title"><span class="gold-text">💎</span> Gominas</h3>
+          <div class="products-grid">
+            <div class="product-card" data-cat="gominas">
+              <div class="product-img gomina-1"></div>
+              <div class="product-info">
+                <span class="product-tag">Fijación Fuerte</span>
+                <h4>Extra Fijación</h4>
+                <p>Control máximo todo el día. Sin residuos, sin brillo excesivo.</p>
+                <div class="product-footer">
+                  <span class="product-price">$28.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Gomina Extra Fijación')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="gominas">
+              <div class="product-img gomina-2"></div>
+              <div class="product-info">
+                <span class="product-tag">Mate</span>
+                <h4>Gomina Mate</h4>
+                <p>Acabado seco y natural. Perfecta para looks casuales y modernos.</p>
+                <div class="product-footer">
+                  <span class="product-price">$25.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Gomina Mate')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="gominas">
+              <div class="product-img gomina-3"></div>
+              <div class="product-info">
+                <span class="product-tag">Brillo</span>
+                <h4>Brillo Natural</h4>
+                <p>Brillo controlado y definición perfecta. El toque final que buscas.</p>
+                <div class="product-footer">
+                  <span class="product-price">$27.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Gomina Brillo Natural')">Consultar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Capilares -->
+        <div class="products-category" id="cat-capilares">
+          <h3 class="category-title"><span class="gold-text">🧴</span> Productos Capilares</h3>
+          <div class="products-grid">
+            <div class="product-card" data-cat="capilares">
+              <div class="product-img cap-1"></div>
+              <div class="product-info">
+                <span class="product-tag">Modelado</span>
+                <h4>Cera para Cabello</h4>
+                <p>Textura flexible y natural. Modelado versátil sin rigidez.</p>
+                <div class="product-footer">
+                  <span class="product-price">$32.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Cera para Cabello')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="capilares">
+              <div class="product-img cap-2"></div>
+              <div class="product-info">
+                <span class="product-tag">Pro</span>
+                <h4>Pomada Profesional</h4>
+                <p>Fórmula profesional de barbería. Fijación media con acabado satinado.</p>
+                <div class="product-footer">
+                  <span class="product-price">$38.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Pomada Profesional')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="capilares">
+              <div class="product-img cap-3"></div>
+              <div class="product-info">
+                <span class="product-tag">Barba</span>
+                <h4>Aceite para Barba</h4>
+                <p>Hidratación profunda y suavidad total. Aroma masculino duradero.</p>
+                <div class="product-footer">
+                  <span class="product-price">$30.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Aceite para Barba')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="capilares">
+              <div class="product-img cap-4"></div>
+              <div class="product-info">
+                <span class="product-tag">Limpieza</span>
+                <h4>Shampoo Especializado</h4>
+                <p>Limpieza profunda para cuero cabelludo saludable. pH balanceado.</p>
+                <div class="product-footer">
+                  <span class="product-price">$22.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Shampoo Especializado')">Consultar</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card" data-cat="capilares">
+              <div class="product-img cap-5"></div>
+              <div class="product-info">
+                <span class="product-tag">Tratamiento</span>
+                <h4>Tratamiento Capilar</h4>
+                <p>Nutrición intensiva para cabellos dañados o con exceso de producto.</p>
+                <div class="product-footer">
+                  <span class="product-price">$45.000 COP</span>
+                  <button class="btn-outline" onclick="consultarProducto('Tratamiento Capilar')">Consultar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal consulta -->
+      <div class="modal" id="modal-consulta">
+        <div class="modal-content">
+          <button class="modal-close" onclick="cerrarModal()">✕</button>
+          <div class="modal-icon">💬</div>
+          <h3 id="modal-title">Consultar Producto</h3>
+          <p>Para consultar disponibilidad y precio actualizado, contáctanos directamente:</p>
+          <a href="https://wa.me/573122785946" class="btn-primary" target="_blank">📱 WhatsApp</a>
+          <a href="tel:+573122785946" class="btn-secondary mt-sm">📞 Llamar</a>
+        </div>
+      </div>
+      <div class="modal-backdrop" id="modal-backdrop" onclick="cerrarModal()"></div>
+    </section><!-- /page-productos -->
+
+
+    <!-- =============================== -->
+    <!-- PAGE: NOSOTROS                  -->
+    <!-- =============================== -->
+    <section class="page" id="page-nosotros">
+      <div class="page-hero">
+        <h1>Sobre <span class="gold-text">Nosotros</span></h1>
+        <p>Una historia de pasión, familia y estilo</p>
+      </div>
+
+      <div class="section nosotros-section">
+
+        <div class="historia-block">
+          <div class="historia-text">
+            <span class="section-eyebrow">Nuestra Historia</span>
+            <h2>Más de una Década <span class="gold-text">de Legado</span></h2>
+            <p>MAKEANDS FAMILY nació de un sueño sencillo pero poderoso: ofrecer cortes de calidad con el calor del trato familiar. Desde nuestros inicios, supimos que cada cliente que entrara por nuestra puerta merecía salir transformado, no solo en imagen sino en confianza.</p>
+            <p>Con más de una década de experiencia, nos hemos convertido en un punto de referencia para quienes buscan estilo, confianza y calidad en cada visita. Lo que comenzó como una pequeña barbería se ha transformado en un espacio de encuentro y comunidad.</p>
+            <p>Hoy, MAKEANDS FAMILY sigue siendo lo que siempre fue: un lugar donde la tradición del oficio barbero se fusiona con las tendencias más contemporáneas del cuidado masculino.</p>
+          </div>
+          <div class="historia-visual">
+            <div class="historia-logo-wrap">
+              <svg viewBox="0 0 220 200" class="nosotros-svg">
+                <!-- Replica del logo con animación suave -->
+                <g class="pole-left">
+                  <rect x="18" y="30" width="18" height="140" rx="9" fill="#F0F0F0" stroke="#ccc" stroke-width="1"/>
+                  <clipPath id="clip-left2"><rect x="18" y="30" width="18" height="140" rx="9"/></clipPath>
+                  <g clip-path="url(#clip-left2)">
+                    <rect x="18" y="30" width="18" height="18" fill="#D62828"/>
+                    <rect x="18" y="48" width="18" height="9" fill="#FFFFFF"/>
+                    <rect x="18" y="57" width="18" height="18" fill="#1D4ED8"/>
+                    <rect x="18" y="75" width="18" height="18" fill="#D62828"/>
+                    <rect x="18" y="93" width="18" height="9" fill="#FFFFFF"/>
+                    <rect x="18" y="102" width="18" height="18" fill="#1D4ED8"/>
+                    <rect x="18" y="120" width="18" height="18" fill="#D62828"/>
+                    <rect x="18" y="138" width="18" height="9" fill="#FFFFFF"/>
+                    <rect x="18" y="147" width="18" height="18" fill="#1D4ED8"/>
+                  </g>
+                  <ellipse cx="27" cy="30" rx="9" ry="5" fill="#D4AF37"/>
+                  <ellipse cx="27" cy="170" rx="9" ry="5" fill="#D4AF37"/>
+                </g>
+                <g class="pole-right">
+                  <rect x="184" y="30" width="18" height="140" rx="9" fill="#F0F0F0" stroke="#ccc" stroke-width="1"/>
+                  <clipPath id="clip-right2"><rect x="184" y="30" width="18" height="140" rx="9"/></clipPath>
+                  <g clip-path="url(#clip-right2)">
+                    <rect x="184" y="30" width="18" height="18" fill="#D62828"/>
+                    <rect x="184" y="48" width="18" height="9" fill="#FFFFFF"/>
+                    <rect x="184" y="57" width="18" height="18" fill="#1D4ED8"/>
+                    <rect x="184" y="75" width="18" height="18" fill="#D62828"/>
+                    <rect x="184" y="93" width="18" height="9" fill="#FFFFFF"/>
+                    <rect x="184" y="102" width="18" height="18" fill="#1D4ED8"/>
+                    <rect x="184" y="120" width="18" height="18" fill="#D62828"/>
+                    <rect x="184" y="138" width="18" height="9" fill="#FFFFFF"/>
+                    <rect x="184" y="147" width="18" height="18" fill="#1D4ED8"/>
+                  </g>
+                  <ellipse cx="193" cy="30" rx="9" ry="5" fill="#D4AF37"/>
+                  <ellipse cx="193" cy="170" rx="9" ry="5" fill="#D4AF37"/>
+                </g>
+                <ellipse cx="110" cy="155" rx="45" ry="35" fill="#5A5A5A"/>
+                <ellipse cx="110" cy="105" rx="48" ry="44" fill="#6B6B6B"/>
+                <ellipse cx="87" cy="118" rx="20" ry="16" fill="#5E5E5E"/>
+                <ellipse cx="133" cy="118" rx="20" ry="16" fill="#5E5E5E"/>
+                <ellipse cx="110" cy="90" rx="35" ry="28" fill="#717171"/>
+                <path d="M97 82 Q110 78 123 82" stroke="#555" stroke-width="2" fill="none"/>
+                <path d="M101 87 Q110 84 119 87" stroke="#555" stroke-width="1.5" fill="none"/>
+                <circle cx="96" cy="98" r="9" fill="#2A2A2A"/>
+                <circle cx="124" cy="98" r="9" fill="#2A2A2A"/>
+                <circle cx="96" cy="98" r="6" fill="#1A1A1A"/>
+                <circle cx="124" cy="98" r="6" fill="#1A1A1A"/>
+                <circle cx="98" cy="96" r="2" fill="white"/>
+                <circle cx="126" cy="96" r="2" fill="white"/>
+                <ellipse cx="110" cy="113" rx="12" ry="8" fill="#3A3A3A"/>
+                <ellipse cx="105" cy="111" rx="4" ry="3" fill="#2A2A2A"/>
+                <ellipse cx="115" cy="111" rx="4" ry="3" fill="#2A2A2A"/>
+                <ellipse cx="110" cy="128" rx="28" ry="16" fill="#5A5A5A"/>
+                <path d="M90 124 Q110 135 130 124" stroke="#444" stroke-width="2" fill="#4A4A4A"/>
+                <rect x="100" y="126" width="5" height="8" rx="2" fill="#E8E8E8"/>
+                <rect x="115" y="126" width="5" height="8" rx="2" fill="#E8E8E8"/>
+                <ellipse cx="73" cy="92" rx="14" ry="12" fill="#5A5A5A"/>
+                <ellipse cx="147" cy="92" rx="14" ry="12" fill="#5A5A5A"/>
+                <path d="M102 148 L108 143 L114 148 L108 153 Z" fill="#D4AF37"/>
+                <circle cx="110" cy="148" r="3" fill="#B8960C"/>
+                <g class="crown">
+                  <rect x="82" y="60" width="56" height="20" rx="3" fill="#D4AF37"/>
+                  <polygon points="82,60 89,42 96,60" fill="#D4AF37"/>
+                  <polygon points="97,60 110,36 123,60" fill="#D4AF37"/>
+                  <polygon points="124,60 131,42 138,60" fill="#D4AF37"/>
+                  <circle cx="110" cy="44" r="5" fill="#D62828"/>
+                  <circle cx="89" cy="48" r="3.5" fill="#1D4ED8"/>
+                  <circle cx="131" cy="48" r="3.5" fill="#1D4ED8"/>
+                  <rect x="82" y="68" width="56" height="4" rx="2" fill="#B8960C"/>
+                  <circle cx="95" cy="67" r="3" fill="#B8960C"/>
+                  <circle cx="110" cy="67" r="3" fill="#B8960C"/>
+                  <circle cx="125" cy="67" r="3" fill="#B8960C"/>
+                </g>
+              </svg>
+              <div class="years-badge">
+                <span class="years-num">+10</span>
+                <span class="years-txt">años</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fundador -->
+        <div class="fundador-block">
+          <div class="fundador-avatar">
+            <div class="avatar-placeholder">CM</div>
+          </div>
+          <div class="fundador-text">
+            <span class="section-eyebrow">Nuestro Fundador</span>
+            <h2>Carlos <span class="gold-text">Makeands</span></h2>
+            <p class="fundador-role">✂ Barbero Profesional & Fundador</p>
+            <p>Carlos Makeands es un artesano apasionado por el cuidado masculino. Desde muy joven encontró en la barbería su vocación: transformar no solo el aspecto físico de sus clientes, sino también su confianza y actitud ante el mundo.</p>
+            <p>Después de años de formación y práctica en técnicas modernas y tradicionales —pasando por talleres de barbería en Medellín, Bogotá y Cali— decidió fundar MAKEANDS FAMILY con una misión clara: que cada persona que se sentara en su silla saliera sintiéndose como la mejor versión de sí misma.</p>
+            <p>Hoy, Carlos lidera un equipo comprometido con la excelencia y la calidez humana, manteniendo vivo el espíritu familiar que le da nombre a la barbería.</p>
+          </div>
+        </div>
+
+        <!-- MVV -->
+        <div class="mvv-block">
+          <div class="mvv-card">
+            <div class="mvv-icon">🎯</div>
+            <h3>Misión</h3>
+            <p>Brindar servicios de barbería de alta calidad que mejoren la imagen y confianza de nuestros clientes, en un ambiente cálido, profesional y familiar.</p>
+          </div>
+          <div class="mvv-card">
+            <div class="mvv-icon">🔭</div>
+            <h3>Visión</h3>
+            <p>Ser una de las barberías más reconocidas de Colombia por su calidad, profesionalismo y atención al cliente, llevando nuestro estilo a cada rincón del país.</p>
+          </div>
+          <div class="mvv-card">
+            <div class="mvv-icon">💎</div>
+            <h3>Valores</h3>
+            <ul class="valores-list">
+              <li>✅ Respeto</li>
+              <li>✅ Profesionalismo</li>
+              <li>✅ Honestidad</li>
+              <li>✅ Puntualidad</li>
+              <li>✅ Excelencia</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /page-nosotros -->
+
+
+    <!-- =============================== -->
+    <!-- PAGE: CITA                      -->
+    <!-- =============================== -->
+    <section class="page" id="page-cita">
+      <div class="page-hero">
+        <h1>Pedir <span class="gold-text">Cita</span></h1>
+        <p>Reserva tu cita en segundos</p>
+      </div>
+
+      <div class="section cita-section">
+        <div class="cita-container">
+
+          <!-- Formulario -->
+          <div class="cita-form-wrap" id="cita-form-wrap">
+            <h2>Tu información</h2>
+            <div class="form-group">
+              <label for="cita-nombre">Nombre completo *</label>
+              <input type="text" id="cita-nombre" placeholder="Ej: Juan Pérez" />
+            </div>
+            <div class="form-group">
+              <label for="cita-cel">Número de celular *</label>
+              <input type="tel" id="cita-cel" placeholder="+57 300 000 0000" />
+            </div>
+            <div class="form-group">
+              <label for="cita-email">Correo electrónico</label>
+              <input type="email" id="cita-email" placeholder="correo@ejemplo.com" />
+            </div>
+            <div class="form-group">
+              <label for="cita-servicio">Servicio *</label>
+              <select id="cita-servicio">
+                <option value="">Selecciona un servicio</option>
+                <option>Corte Clásico</option>
+                <option>Corte Fade</option>
+                <option>Corte Taper Fade</option>
+                <option>Corte Buzz Cut</option>
+                <option>Corte Low Fade</option>
+                <option>Corte High Fade</option>
+                <option>Corte con Diseño</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cita-fecha">Fecha *</label>
+                <input type="date" id="cita-fecha" />
+              </div>
+              <div class="form-group">
+                <label for="cita-hora">Hora *</label>
+                <select id="cita-hora">
+                  <option value="">Selecciona hora</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cita-comentarios">Comentarios adicionales</label>
+              <textarea id="cita-comentarios" rows="3" placeholder="¿Tienes alguna preferencia especial?"></textarea>
+            </div>
+            <button class="btn-primary btn-full" onclick="reservarCita()">✅ Confirmar Reserva</button>
+          </div>
+
+          <!-- Confirmación -->
+          <div class="cita-confirm" id="cita-confirm" style="display:none;">
+            <div class="confirm-icon">✅</div>
+            <h2>¡Cita Reservada!</h2>
+            <p>Tu cita ha sido registrada exitosamente. Nos pondremos en contacto para confirmar.</p>
+            <div class="confirm-summary" id="confirm-summary"></div>
+            <div class="confirm-contact">
+              <p>¿Tienes alguna pregunta?</p>
+              <a href="tel:+573122785946" class="btn-secondary">📞 +57 312 278 5946</a>
+            </div>
+            <button class="btn-outline mt" onclick="nuevaCita()">Reservar otra cita</button>
+          </div>
+
+          <!-- Info lateral -->
+          <div class="cita-info">
+            <div class="info-card">
+              <h3>💈 Información</h3>
+              <div class="info-item">
+                <span class="info-icon">📅</span>
+                <div>
+                  <strong>Horario</strong>
+                  <p>Lunes a Sábado<br/>9:00 AM – 6:00 PM</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div>
+                  <strong>Teléfono</strong>
+                  <p>+57 312 278 5946</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">💰</span>
+                <div>
+                  <strong>Precio base</strong>
+                  <p>$20.000 COP</p>
+                </div>
+              </div>
+              <a href="https://wa.me/573122785946" target="_blank" class="btn-whatsapp">📱 Reservar por WhatsApp</a>
+            </div>
+
+            <!-- Citas guardadas -->
+            <div class="info-card mt" id="mis-citas-card" style="display:none;">
+              <h3>📋 Mis Citas</h3>
+              <div id="mis-citas-list"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- /page-cita -->
+
+
+    <!-- =============================== -->
+    <!-- PAGE: CONTACTO                  -->
+    <!-- =============================== -->
+    <section class="page" id="page-contacto">
+      <div class="page-hero">
+        <h1><span class="gold-text">Contáctanos</span></h1>
+        <p>Estamos para servirte</p>
+      </div>
+
+      <div class="section contacto-section">
+        <div class="contacto-grid">
+
+          <div class="contacto-info-col">
+            <div class="contacto-card">
+              <div class="contacto-item">
+                <div class="ci-icon">📞</div>
+                <div>
+                  <strong>Teléfono / WhatsApp</strong>
+                  <p>+57 312 278 5946</p>
+                  <a href="tel:+573122785946" class="btn-outline-sm">Llamar ahora</a>
+                </div>
+              </div>
+              <div class="contacto-item">
+                <div class="ci-icon">🕐</div>
+                <div>
+                  <strong>Horario de Atención</strong>
+                  <p>Lunes a Sábado<br/>9:00 AM – 6:00 PM</p>
+                </div>
+              </div>
+              <div class="contacto-item">
+                <div class="ci-icon">📍</div>
+                <div>
+                  <strong>Dirección</strong>
+                  <p>Carrera 15 #45-32<br/>Bogotá, Colombia</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mapa placeholder -->
+            <div class="mapa-placeholder">
+              <div class="mapa-overlay">
+                <span>📍</span>
+                <p>Carrera 15 #45-32, Bogotá</p>
+                <a href="https://maps.google.com" target="_blank" class="btn-outline-sm">Ver en Google Maps</a>
+              </div>
+            </div>
+
+            <!-- Botones de contacto rápido -->
+            <div class="quick-contact">
+              <a href="https://wa.me/573122785946" target="_blank" class="quick-btn whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <a href="tel:+573122785946" class="quick-btn llamar">
+                📞 Llamar
+              </a>
+            </div>
+          </div>
+
+          <!-- Formulario de contacto rápido -->
+          <div class="contacto-form-col">
+            <h2>Envíanos un <span class="gold-text">Mensaje</span></h2>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" id="cont-nombre" placeholder="Tu nombre" />
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" id="cont-tel" placeholder="+57 300 000 0000" />
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea id="cont-msg" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+            </div>
+            <button class="btn-primary btn-full" onclick="enviarContacto()">Enviar Mensaje</button>
+            <div id="cont-success" class="form-success" style="display:none;">
+              ✅ Mensaje enviado. Te contactaremos pronto.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- /page-contacto -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text-mini">MAKEANDS <span class="gold">FAMILY</span></span>
+        <p>Más de 10 años cuidando tu estilo</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('inicio')">Inicio</a>
+        <a href="#" onclick="showPage('productos')">Productos</a>
+        <a href="#" onclick="showPage('nosotros')">Nosotros</a>
+        <a href="#" onclick="showPage('cita')">Cita</a>
+        <a href="#" onclick="showPage('contacto')">Contacto</a>
+      </div>
+      <div class="footer-contact">
+        <p>📞 +57 312 278 5946</p>
+        <p>🕐 Lun–Sáb 9:00 AM – 6:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 MAKEANDS FAMILY. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
