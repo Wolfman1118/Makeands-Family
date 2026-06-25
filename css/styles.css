@@ -653,13 +653,54 @@ body {
   box-shadow: var(--shadow);
 }
 .product-img {
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+.product-img img,
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.45s var(--transition);
+  filter: contrast(1.03) saturate(1.04);
+}
+
+/* Keep gradients for placeholder cards but ensure consistent aspect */
+.product-img[style], .product-img[class*="gomina-"], .product-img[class*="cap-"] {
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.locion-1 { background: linear-gradient(135deg, #0a1628 0%, #1d3a5c 50%, #2a5f8f 100%); }
-.locion-2 { background: linear-gradient(135deg, #100a00 0%, #3d2400 50%, #D4AF37 100%); }
-.locion-3 { background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d2d2d 100%); }
+
+@media (max-width: 600px) {
+  .product-img { aspect-ratio: 4 / 3; }
+}
+.locion-1 { background-image: 
+  url("../img/lociones/swiss-army.webp");
+  background-size: cover;
+  background-position: center; }
+.locion-2 {
+  background-image: url("../img/lociones/ohm.webp");
+  background-size: cover;
+  background-position: center;
+}
+.locion-3 {
+  background-image: url("../img/lociones/silver-mountain.webp");
+  background-size: cover;
+  background-position: center;
+ }
+.locion-4 {
+  background-image: url("../img/lociones/invictus.webp");
+  background-size: cover;
+  background-position: center;
+}
 .gomina-1 { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #222 100%); }
 .gomina-2 { background: linear-gradient(135deg, #0a1628 0%, #152a4a 50%, #1d3a5c 100%); }
 .gomina-3 { background: linear-gradient(135deg, #0f0500 0%, #2a1200 50%, #3d1c00 100%); }
@@ -668,14 +709,6 @@ body {
 .cap-3 { background: linear-gradient(135deg, #0a1010 0%, #0a2020 50%, #0a3030 100%); }
 .cap-4 { background: linear-gradient(135deg, #050a1a 0%, #0d1628 50%, #1d4ed8 100%); }
 .cap-5 { background: linear-gradient(135deg, #100a00 0%, #D4AF37 100%); }
-.product-img::after {
-  content: '🧴';
-  font-size: 3.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
 .product-info { padding: 1.25rem; }
 .product-tag {
   display: inline-block;
@@ -790,7 +823,7 @@ body {
 }
 .historia-visual { display: flex; justify-content: center; }
 .historia-logo-wrap { position: relative; display: inline-block; }
-.nosotros-svg { width: 260px; height: 240px; filter: drop-shadow(0 0 30px rgba(212,175,55,0.2)); }
+.nosotros-svg, .nosotros-logo-img { width: 350px; height: auto; filter: drop-shadow(0 0 30px rgba(212,175,55,0.2)); border-radius: 18px; }
 .years-badge {
   position: absolute;
   bottom: -1rem;
@@ -810,53 +843,6 @@ body {
 }
 .years-num { font-size: 1.4rem; line-height: 1; }
 .years-txt { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
-
-.fundador-block {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 3rem;
-  align-items: start;
-  margin-bottom: 5rem;
-  background: var(--dark2);
-  border-radius: var(--radius);
-  border: 1px solid rgba(212,175,55,0.15);
-  padding: 3rem;
-}
-.fundador-avatar { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
-.avatar-placeholder {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--dark3), var(--dark));
-  border: 3px solid var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--gold);
-}
-.fundador-text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0.5rem 0;
-}
-.fundador-role {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.25rem;
-}
-.fundador-text p {
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin-bottom: 0.75rem;
-}
 
 .mvv-block {
   display: grid;
