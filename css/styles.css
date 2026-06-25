@@ -445,13 +445,39 @@ body {
   overflow: hidden;
 }
 /* Gradient placeholders para servicios */
-.service-img.classic  { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
-.service-img.fade     { background: linear-gradient(135deg, #0d0d0d 0%, #1a0a0a 50%, #2d0a0a 100%); }
-.service-img.taper    { background: linear-gradient(135deg, #0a0a1a 0%, #0d1b3e 50%, #1d4ed8 100%); }
-.service-img.buzz     { background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #2a2a2a 100%); }
-.service-img.lowfade  { background: linear-gradient(135deg, #0a1628 0%, #0d2b4e 50%, #1a3a5c 100%); }
-.service-img.highfade { background: linear-gradient(135deg, #1a0000 0%, #3d0000 50%, #5a0000 100%); }
-.service-img.design   { background: linear-gradient(135deg, #100a00 0%, #2a1800 50%, #3d2400 100%); }
+.service-img.classic {
+  background-image: url('../img/cortes/classic-cut.webp');
+  background-size: cover;
+  background-position: center;
+}
+.service-img.fade     { 
+  background-image: url("../img/cortes/fade.webp");
+  background-size:cover;
+  background-position:center;
+}
+.service-img.taper    { 
+  background-image: url("../img/cortes/taper-fade.webp");
+  background-size: cover;
+  background-position: center;
+ }
+.service-img.buzz     {
+  background-image: url("../img/cortes/buzz.webp");
+  background-size: cover;
+  background-position: center;
+}
+.service-img.lowfade  { 
+  background-image: url("../img/cortes/low-fade.webp");
+  background-size: cover;
+  background-position: center;
+ }
+.service-img.highfade { 
+  background-image: url("../img/cortes/high-fade.webp");
+  background-size: cover;
+  background-position: center; }
+.service-img.design   { 
+  background-image: url("../img/cortes/diseño.webp");
+  background-size: cover;
+  background-position: center; }
 .service-img::after {
   content: '✂';
   font-size: 3rem;
