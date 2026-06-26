@@ -250,7 +250,7 @@ function saveLocalAppointment(appointment) {
 }
 
 function openWhatsApp(appointment) {
-  const text = `¡Hola MAKEANDS FAMILY! Quiero agendar una cita. Cliente: ${appointment.clientName}. Celular: ${appointment.clientPhone}. Servicio: ${appointment.serviceName} (${appointment.servicePrice}). Fecha: ${appointment.date}. Hora: ${appointment.time}.`;
+  const text = `¡Hola MAKEANDS FAMILY! Quiero agendar una cita. Cliente: ${appointment.clientName}. Celular: ${appointment.clientPhone}. Fecha: ${appointment.date}. Hora: ${appointment.time}.`;
   const url = `https://wa.me/${BARBER_PHONE_INTL}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 }
